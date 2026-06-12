@@ -1,0 +1,79 @@
+<app-sidebar></app-sidebar>
+
+<div class="main-content">
+
+
+    <div class="form-wrapper">
+        <div class="form-card">
+
+            <div class="form-header">
+                <h2>Créer un nouveau projet</h2>
+                <p>Renseignez les informations ci-dessous pour initialiser votre espace de travail.</p>
+            </div>
+
+            <form (ngSubmit)="creerProjet()">
+                <!-- NOM DU PROJET -->
+                <div class="form-group">
+                    <label class="form-label" for="projectName">Nom du projet</label>
+                    <input type="text" id="projectName" [(ngModel)]="formData.titre" name="name" class="form-control" placeholder="Ex: Refonte du site vitrine" required>
+                </div>
+
+                <!-- DESCRIPTION -->
+                <div class="form-group">
+                    <label class="form-label" for="projectDescription">Description</label>
+                    <textarea id="projectDescription" [(ngModel)]="formData.description" name="description" class="form-control textarea" placeholder="Décrivez brièvement les objectifs, les jalons ou le contexte de ce projet..." rows="5" required></textarea>
+                </div>
+
+                <div class="form-row">
+                    <!-- STATUT -->
+                    <div class="form-group">
+                        <label class="form-label" for="projectStatus">Statut</label>
+                        <select id="projectStatus" class="form-control select" [(ngModel)]="formData.statut" name="statut">
+                            <option value="PROGRAMMATION">Programmation</option>
+                            <option value="ACTIF">Actif</option>
+                            <option value="EN_ATTENTE">En attente</option>
+                            <option value="COMPLETE">Complété</option>
+                            <option value="ANNULE">Annulé</option>
+                        </select>
+                    </div>
+
+                    <!-- PRIORITÉ -->
+                    <div class="form-group">
+                        <label class="form-label" for="projectPriority">Priorité</label>
+                        <select id="projectPriority" class="form-control select" [(ngModel)]="formData.priorite" name="priorite">
+                            <option value="FAIBLE">Faible</option>
+                            <option value="MOYEN">Moyen</option>
+                            <option value="ELEVE">Élevée</option>
+                            <option value="URGENT">Urgente</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <!-- DATE DÉBUT -->
+                    <div class="form-group">
+                        <label class="form-label" for="startDate">Date de début</label>
+                        <input type="date" id="startDate" class="form-control" aria-label="date_debut" [(ngModel)]="formData.date_debut" name="date_debut">
+                    </div>
+
+                    <!-- DATE FIN -->
+                    <div class="form-group">
+                        <label class="form-label" for="endDate">Date de fin</label>
+                        <input type="date" id="endDate" class="form-control" aria-label="date_fin" [(ngModel)]="formData.date_fin" name="date_fin">
+                    </div>
+                </div>
+
+                <!-- ACTIONS -->
+                <div class="form-actions">
+                    <button type="button" routerLink="/projets" class="btn-cancel">Annuler</button>
+                    <button type="submit" class="btn-submit" [disabled]="!formData.titre">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-icon">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
+                        Créer le projet
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

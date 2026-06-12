@@ -1,0 +1,88 @@
+<app-sidebar></app-sidebar>
+
+<div class="main-content">
+
+
+    <div class="form-wrapper">
+        <div class="form-card">
+            <h2 class="form-title">Modifier la tâche</h2>
+
+            <!-- TITRE -->
+            <div class="form-group">
+                <label class="form-label" for="task-title">Titre de la tâche</label>
+                <input id="task-title" type="text" class="form-control" placeholder="Ex: Configurer la base de données" [(ngModel)]="formData.titre">
+            </div>
+
+            <!-- DESCRIPTION -->
+            <div class="form-group">
+                <label class="form-label" for="task-desc">Description</label>
+                <textarea id="task-desc" class="form-control textarea" placeholder="Détaillez les objectifs de cette tâche..." [(ngModel)]="formData.description"></textarea>
+            </div>
+
+            <div class="form-row">
+                <!-- PROJET -->
+                <div class="form-group">
+                    <label class="form-label" for="task-project">Associer à un projet</label>
+                    <select id="task-project" class="form-control select" [(ngModel)]="formData.projet">
+                        <option [ngValue]="null" disabled selected>-- Sélectionnez un projet --</option>
+                        @for (proj of listeProjets; track proj.id) {
+                            <option [value]="proj.id">{{ proj.titre }}</option>
+                        }
+                    </select>
+                </div>
+
+                <!-- STATUT -->
+                <div class="form-group">
+                    <label class="form-label" for="task-status">Statut</label>
+                    <select id="task-status" class="form-control select" [(ngModel)]="formData.statut">
+                        <option value="TODO">À faire</option>
+                        <option value="IN_PROGRESS">En cours</option>
+                        <option value="DONE">Terminé</option>
+                    </select>
+                </div>
+
+                <!-- PRIORITÉ -->
+                <div class="form-group">
+                    <label class="form-label" for="task-priority">Priorité</label>
+                    <select id="task-priority" class="form-control select" [(ngModel)]="formData.priorite">
+                        <option value="LOW">BAS</option>
+                        <option value="MEDIUM">MOYEN</option>
+                        <option value="HIGH">ÉLEVÉ</option>
+                        <option value="URGENT">URGENT</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- PROGRESSION & DATE ÉCHÉANCE -->
+            <div class="form-row">
+                <!-- PROGRESSION -->
+                <div class="form-group">
+                    <label class="form-label" for="task-progress">Progression (%)</label>
+                    <input id="task-progress" type="number" class="form-control" placeholder="Ex: 50" [(ngModel)]="formData.progression">
+                </div>
+
+                <!-- DATE D'ÉCHÉANCE -->
+                <div class="form-group">
+                    <label class="form-label" for="task-due-date">Date d'échéance</label>
+                    <input id="task-due-date" type="date" class="form-control" [(ngModel)]="formData.date_fermeture">
+                </div>
+
+                <!-- ASSIGNATION -->
+                <div class="form-group">
+                    <label class="form-label" for="task-assignee">Responsable (ID)</label>
+                    <input id="task-assignee" type="number" class="form-control" placeholder="Ex: 4" [(ngModel)]="formData.assignation">
+                </div>
+            </div>
+
+            <!-- ACTIONS -->
+            <div class="form-actions">
+                <button class="btn-submit" (click)="modifierTache()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                    Enregistrer les modifications
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

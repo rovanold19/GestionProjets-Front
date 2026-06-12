@@ -1,0 +1,50 @@
+<app-sidebar></app-sidebar>
+
+<div class="main-content">
+
+
+    <div class="projects-container">
+
+        <div class="projects-header">
+            <div class="header-text">
+                <h2>Projets</h2>
+                <p>Gérez, suivez et organisez vos différents espaces de travail</p>
+            </div>
+
+            <button routerLink="/projets/creer" class="btn-create">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+                Nouveau projet
+            </button>
+        </div>
+
+
+        <div class="projects-grid">
+            @for (projet of projets; track projet.id) {
+            <div class="project-card">
+                <div class="card-body">
+                    <h4 class="project-title">{{ projet.titre }}</h4>
+                    <p class="project-description">{{ projet.description }}</p>
+                </div>
+
+                <div class="card-footer">
+                    <button class="btn-open-project" [routerLink]="['/projets', projet.id]">
+                        Détail du projet 
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            } @empty {
+            <div class="empty-state">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="empty-icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 13.5h3.86a2.25 2.25 0 012.008 1.24l.885 1.77a2.25 2.25 0 002.007 1.24h1.98a2.25 2.25 0 002.007-1.24l.885-1.77a2.25 2.25 0 012.007-1.24h3.86m-18 0h18a2.25 2.25 0 012.25 2.25v4.5A2.25 2.25 0 0118 21H6a2.25 2.25 0 01-2.25-2.25v-4.5a2.25 2.25 0 012.25-2.25zM6.75 6.75h.008v.008H6.75V6.75zm.375 0a.375 3.375 0 11-.75 0 .375 3.375 0 01.75 0zM11.25 6.75h.008v.008h-.008V6.75zm.375 0a.375 3.375 0 11-.75 0 .375 3.375 0 01.75 0z" />
+                </svg>
+                <p>Aucun projet disponible pour le moment.</p>
+            </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<aside class="sidebar">
+    <!-- En-tête / Logo -->
+    <div class="sidebar-brand">
+        <div class="logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </div>
+        <span class="brand-name">ProjetHub</span>
+    </div>
+
+    <!-- Navigation Principale -->
+    <nav class="sidebar-nav">
+        <!-- Lien Tableau de Bord -->
+        <a routerLink="/dashboard" routerLinkActive="active" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="9" rx="1" />
+                <rect x="14" y="3" width="7" height="5" rx="1" />
+                <rect x="14" y="12" width="7" height="9" rx="1" />
+                <rect x="3" y="16" width="7" height="5" rx="1" />
+            </svg>
+            <span class="nav-label">Tableau de bord</span>
+        </a>
+
+        <!-- Lien Projets -->
+        <a routerLink="/projets" routerLinkActive="active" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-19.5 0A2.25 2.25 0 003 15.75v4.5A2.25 2.25 0 005.25 22.5h13.5A2.25 2.25 0 0021 20.25v-4.5a2.25 2.25 0 00-1.5-2.121m-16.5 0c.307 0 .614-.033.911-.101l3.472-.796a2.25 2.25 0 011.083 0l3.472.796c.297.068.604.101.911.101" />
+            </svg>
+            <span class="nav-label">Mes Projets</span>
+        </a>
+
+        <!-- Lien Tâches -->
+        <a routerLink="/taches" routerLinkActive="active" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span class="nav-label">Liste des Tâches</span>
+        </a>
+    </nav>
+
+    <!-- Pied de page Utilisateur avec Bouton Déconnexion -->
+    <div class="sidebar-footer">
+        <div class="user-avatar">U</div>
+        <div class="user-info">
+            <span class="user-name">Utilisateur</span>
+            <span class="user-role">En ligne</span>
+        </div>
+
+        <!-- Nouveau bouton Déconnexion -->
+        <button (click)="logout()" class="btn-logout" title="Se déconnecter" aria-label="Se déconnecter">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="logout-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+            </svg>
+        </button>
+    </div>
+</aside>

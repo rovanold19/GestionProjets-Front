@@ -1,0 +1,383 @@
+/* --- Variables héritées de votre thème Kanban --- */
+
+:host {
+    --bg-main: #0b0f19;
+    --bg-panel: #131a26;
+    --bg-card: #1c2533;
+    --text-main: #f8fafc;
+    --text-muted: #64748b;
+    --accent: #38bdf8;
+    /* Cyan */
+    --accent-indigo: #6366f1;
+    /* Indigo */
+    --accent-emerald: #10b981;
+    /* Émeraude */
+    --accent-amber: #f59e0b;
+    /* Orange/Ambre */
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 20px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --border-color: rgba(255, 255, 255, 0.04);
+    display: block;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-main);
+    min-height: 100vh;
+}
+
+
+/* --- Structure Principale --- */
+
+.main-content {
+    margin-left: 260px;
+    padding: 40px;
+    min-height: 100vh;
+    background-color: var(--bg-main);
+    box-sizing: border-box;
+}
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+
+/* --- Section En-tête : Grande Bannière Volumineuse --- */
+
+.welcome-banner {
+    background: linear-gradient(135deg, #131a26 0%, #1e293b 100%);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: 48px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Effet lumineux décoratif en arrière-plan de la bannière */
+
+.welcome-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.banner-text h1 {
+    margin: 0 0 12px 0;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: -0.8px;
+}
+
+.banner-text p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 700px;
+    line-height: 1.6;
+}
+
+
+/* Bouton Lumineux */
+
+.btn-glow {
+    padding: 14px 28px;
+    background: linear-gradient(135deg, var(--accent) 0%, #4338ca 100%);
+    color: #0b0f19;
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.btn-glow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+}
+
+.btn-icon {
+    width: 18px;
+    height: 18px;
+}
+
+
+/* --- Grille de Présentation Tripartite --- */
+
+.presentation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 28px;
+}
+
+.module-card {
+    background-color: var(--bg-panel);
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+}
+
+.module-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.module-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.module-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+
+/* Encapsulation des icônes colorées */
+
+.icon-wrapper {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-wrapper svg {
+    width: 22px;
+    height: 22px;
+}
+
+.color-cyan {
+    background-color: rgba(56, 189, 248, 0.08);
+    color: var(--accent);
+}
+
+.color-indigo {
+    background-color: rgba(99, 102, 241, 0.08);
+    color: var(--accent-indigo);
+}
+
+.color-emerald {
+    background-color: rgba(16, 185, 129, 0.08);
+    color: var(--accent-emerald);
+}
+
+.module-desc {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    flex: 1;
+    /* Aligne les pieds de cartes entre eux */
+}
+
+.module-footer {
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+}
+
+.btn-text {
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.2s;
+}
+
+.btn-text:hover {
+    color: var(--text-main);
+}
+
+.status-indicator {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-indicator::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent-emerald);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--accent-emerald);
+}
+
+
+/* --- Section Basse Réconfortante & Spacieuse --- */
+
+.methodology-panel {
+    background-color: var(--bg-panel);
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    border-radius: var(--radius-xl);
+    padding: 44px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 40px;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.panel-content h2 {
+    margin: 0 0 16px 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.panel-content p {
+    margin: 0 0 32px 0;
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+
+/* Tags de Fonctionnalités en ligne */
+
+.features-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.feature-tag {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    color: var(--text-main);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.dot.cyan {
+    background-color: var(--accent);
+}
+
+.dot.indigo {
+    background-color: var(--accent-indigo);
+}
+
+.dot.emerald {
+    background-color: var(--accent-emerald);
+}
+
+.dot.amber {
+    background-color: var(--accent-amber);
+}
+
+
+/* Visuel Géométrique Abstrait (Droit) */
+
+.panel-visual {
+    height: 160px;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.01);
+    border-radius: var(--radius-lg);
+    border: 1px dashed rgba(255, 255, 255, 0.04);
+    overflow: hidden;
+}
+
+.abstract-shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(24px);
+    opacity: 0.2;
+}
+
+.shape-1 {
+    width: 100px;
+    height: 100px;
+    background-color: var(--accent);
+    top: 10%;
+    left: 20%;
+}
+
+.shape-2 {
+    width: 120px;
+    height: 120px;
+    background-color: var(--accent-indigo);
+    bottom: -10%;
+    right: 10%;
+}
+
+.shape-3 {
+    width: 80px;
+    height: 80px;
+    background-color: var(--accent-emerald);
+    top: 40%;
+    right: 40%;
+}
+
+
+/* --- Adaptabilité Mobile et Tablette --- */
+
+@media (max-width: 1100px) {
+    .methodology-panel {
+        grid-template-columns: 1fr;
+    }
+    .panel-visual {
+        display: none;
+    }
+    /* Enlève la décoration sur petits écrans */
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+    .welcome-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 32px 24px;
+    }
+    .banner-text h1 {
+        font-size: 1.75rem;
+    }
+}

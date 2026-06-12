@@ -1,0 +1,253 @@
+:host {
+    --bg-main: #0b0f19;
+    --bg-panel: #131a26;
+    --bg-card: #1c2533;
+    --text-main: #f8fafc;
+    --text-muted: #64748b;
+    --accent: #38bdf8;
+    --accent-hover: #0ea5e9;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Couleurs de statuts */
+    --status-todo: #94a3b8;
+    --status-progress: #f59e0b;
+    /* Orange chaud */
+    --status-done: #10b981;
+    /* Émeraude */
+}
+
+
+/* --- Structure Principale --- */
+
+.main-content {
+    margin-left: 260px;
+    padding: 40px 32px;
+    min-height: 100vh;
+    background-color: var(--bg-main);
+    box-sizing: border-box;
+}
+
+.kanban-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+
+/* --- En-tête --- */
+
+.kanban-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    padding-bottom: 20px;
+}
+
+.kanban-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text-main);
+}
+
+.btn-create-task {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--accent);
+    color: #0b0f19;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 10px 18px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-create-task:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
+}
+
+.btn-icon {
+    width: 16px;
+    height: 16px;
+}
+
+
+/* --- Grille Kanban --- */
+
+.kanban-board {
+    display: grid;
+    grid-template-columns: repeat(3, 11fr);
+    /* 3 colonnes égales */
+    gap: 24px;
+    align-items: flex-start;
+}
+
+@media (max-width: 1024px) {
+    .kanban-board {
+        grid-template-columns: 1fr;
+        /* S'empile sur tablette et mobile */
+    }
+}
+
+
+/* --- Colonnes --- */
+
+.kanban-column {
+    background-color: var(--bg-panel);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: var(--radius-lg);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.column-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 8px;
+}
+
+.column-title {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+
+/* Badges de compteurs */
+
+.column-count {
+    font-size: 0.75rem;
+    font-weight: 700;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--status-todo);
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+
+.color-progress {
+    color: var(--status-progress);
+    background-color: rgba(245, 158, 11, 0.1);
+}
+
+.color-done {
+    color: var(--status-done);
+    background-color: rgba(16, 185, 129, 0.1);
+}
+
+
+/* Zone réceptrice des cartes */
+
+.task-list {
+    min-height: 400px;
+    /* Laisse une grande zone pour le drop */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-radius: var(--radius-md);
+}
+
+
+/* --- Les Cartes de Tâches --- */
+
+.task-card {
+    background-color: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    cursor: grab;
+    text-decoration: none;
+    /* Enlève le souligné du routerLink */
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.task-card:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.task-card:active {
+    cursor: grabbing;
+}
+
+.task-card-title {
+    margin: 0 0 8px 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-main);
+    line-height: 1.4;
+}
+
+.task-card-description {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* Coupe le texte proprement à partir de 2 lignes */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+
+/* État vide */
+
+.task-card-empty {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-align: center;
+    padding: 32px 16px;
+    border: 1px dashed rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    background-color: rgba(255, 255, 255, 0.005);
+}
+
+
+/* --- 🪄 ANIMATIONS ANGULAR CDK DRAG & DROP --- */
+
+
+/* La carte pendant qu'on la glisse (preview) */
+
+.cdk-drag-preview {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5) !important;
+    border-color: var(--accent) !important;
+    background-color: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: 16px;
+}
+
+
+/* L'espace vide (fantôme) laissé au sol pendant le déplacement */
+
+.cdk-drag-placeholder {
+    opacity: 0.2;
+    border: 2px dashed var(--accent) !important;
+    background: none !important;
+}
+
+
+/* Animation fluide quand on relâche la carte */
+
+.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+
+/* Animation fluide des autres cartes qui s'écartent */
+
+.task-list.cdk-drop-list-dragging .task-card:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

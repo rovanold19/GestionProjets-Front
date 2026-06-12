@@ -1,0 +1,90 @@
+<app-sidebar></app-sidebar>
+
+<div class="main-content">
+    <div class="kanban-wrapper">
+        <!-- En-tête du Tableau -->
+        <div class="kanban-header">
+            <h2 class="kanban-title">Tableau des tâches</h2>
+            <button routerLink="/taches/creer" class="btn-create-task">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+                Nouvelle tâche
+            </button>
+        </div>
+
+        <!-- Grille du Tableau Kanban -->
+        <div class="kanban-board">
+
+            <!-- Colonne : A FAIRE -->
+            <div class="kanban-column">
+                <div class="column-header">
+                    <h3 class="column-title">À faire</h3>
+                    <span class="column-count">{{ a_faire.length }}</span>
+                </div>
+
+                <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="a_faire" [cdkDropListConnectedTo]="[inProgressList, doneList]" class="task-list" (cdkDropListDropped)="drop($event, 'A_FAIRE')">
+                    @for (tache of a_faire; track tache.id) {
+                    <div class="task-card" cdkDrag [routerLink]="['/taches',tache.id]">
+                        <div class="task-card-header">
+                            <h5 class="task-card-title">{{ tache.titre }}</h5>
+                        </div>
+                        <div class="task-card-body">
+                            <p class="task-card-description">{{ tache.description }}</p>
+                        </div>
+                    </div>
+                    } @empty {
+                    <div class="task-card-empty">Aucune tâche à faire</div>
+                    }
+                </div>
+            </div>
+
+            <!-- Colonne : EN COURS -->
+            <div class="kanban-column">
+                <div class="column-header">
+                    <h3 class="column-title">En cours</h3>
+                    <span class="column-count color-progress">{{ en_cours.length }}</span>
+                </div>
+
+                <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="en_cours" [cdkDropListConnectedTo]="[todoList, doneList]" class="task-list" (cdkDropListDropped)="drop($event, 'EN_COURS')">
+                    @for (tache of en_cours; track tache.id) {
+                    <div class="task-card" cdkDrag [routerLink]="['/taches',tache.id]">
+                        <div class="task-card-header">
+                            <h5 class="task-card-title">{{ tache.titre }}</h5>
+                        </div>
+                        <div class="task-card-body">
+                            <p class="task-card-description">{{ tache.description }}</p>
+                        </div>
+                    </div>
+                    } @empty {
+                    <div class="task-card-empty">Aucune tâche en cours</div>
+                    }
+                </div>
+            </div>
+
+            <!-- Colonne : COMPLETE -->
+            <div class="kanban-column">
+                <div class="column-header">
+                    <h3 class="column-title">Terminé</h3>
+                    <span class="column-count color-done">{{ termine.length }}</span>
+                </div>
+
+                <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="termine" [cdkDropListConnectedTo]="[todoList, inProgressList]" class="task-list" (cdkDropListDropped)="drop($event, 'TERMINE')">
+                    @for (tache of termine; track tache.id) {
+                    <div class="task-card" cdkDrag [routerLink]="['/taches',tache.id]">
+                        <div class="task-card-header">
+                            <h5 class="task-card-title">{{ tache.titre }}</h5>
+                        </div>
+                        <div class="task-card-body">
+                            <p class="task-card-description">{{ tache.description }}</p>
+                        </div>
+                    </div>
+                    } @empty {
+                    <div class="task-card-empty">Aucune tâche terminée</div>
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

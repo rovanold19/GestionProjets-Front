@@ -1,0 +1,391 @@
+:host {
+    --bg-main: #0b0f19;
+    --bg-panel: #131a26;
+    --bg-card: #1c2533;
+    --bg-input: #1a2333;
+    --text-main: #f8fafc;
+    --text-muted: #64748b;
+    --accent: #38bdf8;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* --- Positionnement de la Vue --- */
+
+.main-content {
+    margin-left: 260px;
+    padding: 40px 32px;
+    min-height: 100vh;
+    background-color: var(--bg-main);
+    box-sizing: border-box;
+}
+
+.project-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+
+/* --- En-tête --- */
+
+.project-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    padding-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.project-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.project-main-title {
+    margin: 4px 0 0 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text-main);
+}
+
+
+/* --- Architecture en Double Colonne --- */
+
+.project-grid-layout {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    /* 7 parts pour l'essentiel, 5 parts pour l'équipe */
+    gap: 24px;
+}
+
+@media (max-width: 992px) {
+    .project-grid-layout {
+        grid-template-columns: 1fr;
+        /* S'empile sur tablette/mobile */
+    }
+}
+
+.layout-main-column,
+.layout-side-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+
+/* --- Les Cartes de Sections --- */
+
+.section-card {
+    background-color: var(--bg-panel);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.section-card-title {
+    margin: 0 0 20px 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.project-main-description {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #cbd5e1;
+}
+
+.task-divider {
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.04);
+    margin: 20px 0;
+}
+
+
+/* Métadonnées en Grille */
+
+.project-meta-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 20px;
+}
+
+.info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.info-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.info-date {
+    font-size: 0.9rem;
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+
+/* --- Badges Thématiques --- */
+
+.badge-status,
+.badge-priority,
+.badge-status-sm,
+.role-badge {
+    display: inline-block;
+    align-self: flex-start;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background-color: var(--bg-card);
+    color: var(--text-main);
+}
+
+.badge-status[data-status="COMPLETE"],
+.badge-status-sm[data-status="TERMINE"] {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
+.badge-status[data-status="ACTIF"],
+.badge-status-sm[data-status="EN_COURS"] {
+    background-color: rgba(56, 189, 248, 0.1);
+    color: var(--accent);
+}
+
+.badge-status[data-status="EN_ATTENTE"] {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+}
+
+.role-badge[data-role="ADMINISTRATEUR"] {
+    background-color: rgba(99, 102, 241, 0.1);
+    color: #818cf8;
+}
+
+
+/* --- Jauge de Progression --- */
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.progress-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.progress-bar-bg {
+    flex: 1;
+    height: 8px;
+    background-color: var(--bg-input);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), #6366f1);
+    border-radius: 4px;
+}
+
+
+/* --- Liste de Tâches --- */
+
+.task-items-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.task-item-li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-card);
+    padding: 12px 16px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.task-li-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.task-empty-li {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    padding: 16px;
+}
+
+
+/* --- Formulaires d'Invitation --- */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.form-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.form-control {
+    background-color: var(--bg-input);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    color: var(--text-main);
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    border-color: var(--accent);
+}
+
+
+/* --- Tableau Premium --- */
+
+.table-responsive-wrapper {
+    overflow-x: auto;
+    margin-top: 8px;
+}
+
+.premium-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.85rem;
+}
+
+.premium-table th {
+    color: var(--text-muted);
+    font-weight: 600;
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.premium-table td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    color: var(--text-main);
+    vertical-align: middle;
+}
+
+.td-email {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* --- Boutons et Actions --- */
+
+.project-global-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-action-warning,
+.btn-action-danger,
+.btn-submit-member {
+    border: none;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+}
+
+.btn-action-warning {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+}
+
+.btn-action-warning:hover {
+    background-color: rgba(245, 158, 11, 0.18);
+}
+
+.btn-action-danger {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #f87171;
+}
+
+.btn-action-danger:hover {
+    background-color: rgba(239, 68, 68, 0.18);
+}
+
+.btn-submit-member {
+    background-color: var(--accent);
+    color: #0b0f19;
+    width: 100%;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.btn-submit-member:hover {
+    background-color: #0ea5e9;
+}
+
+.btn-row-delete {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: var(--radius-md);
+    display: inline-flex;
+}
+
+.btn-row-delete:hover {
+    color: #f87171;
+    background-color: rgba(239, 68, 68, 0.05);
+}
+
+.btn-icon-sm {
+    width: 15px;
+    height: 15px;
+}
+
+.text-right {
+    text-align: right;
+}

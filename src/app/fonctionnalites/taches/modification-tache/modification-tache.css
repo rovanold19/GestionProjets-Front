@@ -1,0 +1,190 @@
+:host {
+    /* Injection de la charte graphique homogène */
+    --bg-main: #0b0f19;
+    --bg-panel: #131a26;
+    --bg-input: #1a2333;
+    --text-main: #f8fafc;
+    --text-muted: #64748b;
+    --accent: #38bdf8;
+    --accent-hover: #0ea5e9;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* --- Positionnement Global --- */
+
+.main-content {
+    margin-left: 260px;
+    /* Évite la Sidebar fixe */
+    padding-top: 76px;
+    /* Évite la Navbar fixe */
+    min-height: 100vh;
+    background-color: var(--bg-main);
+    box-sizing: border-box;
+}
+
+.form-wrapper {
+    padding: 40px 32px;
+    display: flex;
+    justify-content: center;
+}
+
+
+/* --- La Carte du Formulaire --- */
+
+.form-card {
+    width: 100%;
+    max-width: 800px;
+    background-color: var(--bg-panel);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.form-title {
+    margin: 0 0 32px 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text-main);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    padding-bottom: 16px;
+}
+
+
+/* --- Structure des rangées --- */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex: 1;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    /* S'adapte sur les petits écrans */
+}
+
+.form-row .form-group {
+    min-width: 220px;
+    /* Évite que les champs deviennent trop étroits */
+}
+
+
+/* --- Labels --- */
+
+.form-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+
+/* --- Contrôles de saisie (Inputs, Textarea, Select) --- */
+
+.form-control {
+    background-color: var(--bg-input);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    color: var(--text-main);
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: var(--transition);
+    outline: none;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+
+/* Placeholders */
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+
+/* Effet au Focus (Sélection du champ) */
+
+.form-control:focus {
+    border-color: var(--accent);
+    background-color: rgba(56, 189, 248, 0.02);
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+}
+
+
+/* Spécificités Textarea */
+
+.textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+
+/* Spécificités Select & Date Picker pour correspondre au thème */
+
+.select,
+input[type="date"] {
+    cursor: pointer;
+}
+
+
+/* Harmonisation de l'icône de calendrier native HTML5 */
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    /* Rend l'icône blanche pour le thème sombre */
+    opacity: 0.5;
+}
+
+
+/* --- Bouton de validation --- */
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    padding-top: 24px;
+}
+
+.btn-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: var(--accent);
+    color: #0b0f19;
+    /* Écrit en sombre sur fond lumineux pour le contraste */
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-submit:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+.btn-icon {
+    width: 18px;
+    height: 18px;
+}

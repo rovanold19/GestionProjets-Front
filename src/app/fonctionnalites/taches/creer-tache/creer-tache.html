@@ -1,0 +1,97 @@
+<app-sidebar></app-sidebar>
+
+<div class="main-content">
+    <!-- Intégration de la Navbar du second code -->
+
+
+    <div class="form-wrapper">
+        <div class="form-card">
+            <h2 class="form-title">Créer une nouvelle tâche</h2>
+
+            <!-- TITRE -->
+            <div class="form-group">
+                <label class="form-label" for="task-title">Titre</label>
+                <input id="task-title" type="text" class="form-control" placeholder="Ex: Configurer la base de données" [(ngModel)]="formData.titre">
+            </div>
+
+            <!-- DESCRIPTION -->
+            <div class="form-group">
+                <label class="form-label" for="task-desc">Description</label>
+                <textarea id="task-desc" class="form-control textarea" placeholder="Détaillez les objectifs de cette tâche..." [(ngModel)]="formData.description"></textarea>
+            </div>
+
+            <div class="form-row">
+                <!-- PROJET -->
+                <div class="form-group">
+                    <label class="form-label" for="task-project">Associer à un projet</label>
+                    <select id="task-project" class="form-control select" [(ngModel)]="formData.projet" (change)="chargerMembresProjet()">
+                        <option [ngValue]="null" disabled selected>-- Sélectionnez un projet --</option>
+                        @for (proj of listeProjets; track proj.id) {
+                            <option [value]="proj.id">{{ proj.titre }}</option>
+                        }
+                    </select>
+                </div>
+
+                <!-- STATUT -->
+                <div class="form-group">
+                    <label class="form-label" for="task-status">Statut Initial</label>
+                    <select id="task-status" class="form-control select" [(ngModel)]="formData.statut">
+                        <option value="A_FAIRE">À faire</option>
+                        <option value="EN_COURS">En cours</option>
+                        <option value="En_REVISION">En révision</option>
+                        <option value="TERMINE">Terminé</option>
+                    </select>
+                </div>
+
+                <!-- PRIORITÉ -->
+                <div class="form-group">
+                    <label class="form-label" for="task-priority">Priorité</label>
+                    <select id="task-priority" class="form-control select" [(ngModel)]="formData.priorite">
+                        <option value="BAS">Bas</option>
+                        <option value="MOYEN">Moyen</option>
+                        <option value="ELEVE">Élevé</option>
+                        <option value="URGENT">Urgent</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- PROGRESSION & DATE ÉCHÉANCE -->
+            <div class="form-row">
+                <!-- PROGRESSION -->
+                <div class="form-group">
+                    <label class="form-label" for="task-progress">Progression (%)</label>
+                    <input id="task-progress" type="number" class="form-control" placeholder="Ex: 50" [(ngModel)]="formData.progression">
+                </div>
+
+                <!-- DATE D'ÉCHÉANCE -->
+                <div class="form-group">
+                    <label class="form-label" for="task-due-date">Date d'échéance</label>
+                    <input id="task-due-date" type="date" class="form-control" [(ngModel)]="formData.date_fermeture">
+                </div>
+
+                <!-- ASSIGNATION (Responsable) -->
+                <div class="form-group">
+                    <label class="form-label" for="task-assignee">Responsable</label>
+                    <select id="task-assignee" class="form-control select" [(ngModel)]="formData.assignation">
+                        <option [ngValue]="null">-- Sélectionner un membre --</option>
+                        @for (membre of membresProjet; track membre.id) {
+                        <option [value]="membre.utilisateur.id">
+                            {{ membre.utilisateur.email }} ({{ membre.role }})
+                        </option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <!-- ACTIONS -->
+            <div class="form-actions">
+                <button class="btn-submit" (click)="creerTache()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                    Créer la tâche
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

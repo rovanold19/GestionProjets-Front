@@ -1,0 +1,102 @@
+<app-sidebar></app-sidebar>
+
+<div class="main-content">
+    <app-navbar></app-navbar>
+
+    <div class="dashboard-container">
+
+        <!-- SECTION EN-TÊTE : BANNER VISUELLE IMPOSANTE -->
+        <div class="welcome-banner">
+            <div class="banner-text">
+                <h1>Bienvenue sur votre Espace de Commande</h1>
+                <p>Planifiez vos sprints, suivez vos objectifs et centralisez l'avancement de tous vos projets au même endroit.</p>
+            </div>
+            <div class="banner-actions">
+                <button routerLink="/projets/creer" class="btn-glow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                    Initialiser un projet
+                </button>
+            </div>
+        </div>
+
+        <!-- GRILLE DE PRÉSENTATION DES MODULES DE GESTION -->
+        <div class="presentation-grid">
+
+            <!-- MODULE KANBAN -->
+            <div class="module-card">
+                <div class="module-header">
+                    <div class="icon-wrapper color-cyan">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="9" rx="1" />
+                            <rect x="14" y="3" width="7" height="5" rx="1" />
+                            <rect x="14" y="12" width="7" height="9" rx="1" />
+                            <rect x="3" y="16" width="7" height="5" rx="1" />
+                        </svg>
+                    </div>
+                    <h3>Tableau Agile Kanban</h3>
+                </div>
+                <p class="module-desc">Visualisez l'état de vos tâches en temps réel. Déplacez vos cartes de "À faire" vers "Terminé" en un glissement grâce à l'interface intuitive Drag & Drop.</p>
+                <div class="module-footer">
+                    <button routerLink="/taches" class="btn-text">Accéder au tableau →</button>
+                </div>
+            </div>
+
+            <!-- MODULE ÉQUIPES -->
+            <div class="module-card">
+                <div class="module-header">
+                    <div class="icon-wrapper color-indigo">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+                        </svg>
+                    </div>
+                    <h3>Gestion des Membres</h3>
+                </div>
+                <p class="module-desc">Attribuez des rôles spécifiques à vos collaborateurs. Suivez qui travaille sur quoi et assurez une communication fluide et transparente au sein de votre équipe.</p>
+                <div class="module-footer">
+                    <span class="status-indicator">Système actif</span>
+                </div>
+            </div>
+
+            <!-- MODULE PERFORMANCE -->
+            <div class="module-card">
+                <div class="module-header">
+                    <div class="icon-wrapper color-emerald">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                    </div>
+                    <h3>Suivi des Jalons</h3>
+                </div>
+                <p class="module-desc">Définissez des dates de début et de fin pour vos projets. Notre plateforme calcule automatiquement votre taux d'avancement pour éviter les retards de livraison.</p>
+                <div class="module-footer">
+                    <button routerLink="/projets" class="btn-text">Parcourir les projets →</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- GRANDE SECTION BASSE : FOCUS MÉTHODOLOGIQUE -->
+        <div class="methodology-panel">
+            <div class="panel-content">
+                <h2>Une structure pensée pour la productivité</h2>
+                <p>ProjetHub combine la flexibilité des méthodes agiles et la puissance du suivi de projet moderne. Divisez vos grands projets en tâches digestes, suivez les priorités absolues de vos journées et collaborez sans friction.</p>
+
+                <div class="features-line">
+                    <div class="feature-tag"><span class="dot cyan"></span> Multi-projets</div>
+                    <div class="feature-tag"><span class="dot indigo"></span> Rôles Administrateurs</div>
+                    <div class="feature-tag"><span class="dot emerald"></span> Priorités Personnalisées</div>
+                    <div class="feature-tag"><span class="dot amber"></span> Gestion des Échéances</div>
+                </div>
+            </div>
+            <div class="panel-visual">
+                <!-- Décoration géométrique abstraite pour habiller l'espace -->
+                <div class="abstract-shape shape-1"></div>
+                <div class="abstract-shape shape-2"></div>
+                <div class="abstract-shape shape-3"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
