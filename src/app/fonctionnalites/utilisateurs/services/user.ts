@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class UserService {
 
   apiUrl =
-  'http://127.0.0.1:8000/api/utilisateurs';
+  'https://rovanold.pythonanywhere.com/api/utilisateurs';
 
   constructor(
     private http: HttpClient

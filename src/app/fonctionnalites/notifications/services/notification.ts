@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 export class NotificationService {
 
   apiUrl =
-  'http://127.0.0.1:8000/api/notifications';
+  'https://rovanold.pythonanywhere.com/api/notifications';
 
   constructor(
     private http: HttpClient

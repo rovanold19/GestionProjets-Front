@@ -10,7 +10,7 @@ import { environnement } from '../../../environnements/environnement.developpeme
 
 export class ProjetService {
 
-  apiUrl =`${environnement.apiUrl}/projets`;
+  apiUrl ='https://rovanold.pythonanywhere.com/api/projets';
 
   constructor(
     private http: HttpClient

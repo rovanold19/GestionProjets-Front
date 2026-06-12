@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environnement } from '../environnements/environnement';
+
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,7 @@ import { environnement } from '../environnements/environnement';
 
 export class ApiService {
 
-  baseUrl = `${environnement.apiUrl}`;
+  baseUrl = 'https://rovanold.pythonanywhere.com/api';
 
   constructor(
     private http: HttpClient

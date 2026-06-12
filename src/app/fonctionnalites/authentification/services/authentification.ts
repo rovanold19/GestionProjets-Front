@@ -8,7 +8,7 @@ import { environnement } from '../../../environnements/environnement.developpeme
 
 export class AuthService {
 
-  apiUrl = `${environnement.apiUrl}/authentification`;
+  apiUrl = 'https://rovanold.pythonanywhere.com/api/authentification';
 
   constructor(
     private http: HttpClient

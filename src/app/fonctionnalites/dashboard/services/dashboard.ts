@@ -7,7 +7,7 @@ import { environnement } from '../../../environnements/environnement.developpeme
 })
 export class DashboardService {
 
-  private apiUrl =`${environnement.apiUrl}/dashboard`;
+  private apiUrl ='https://rovanold.pythonanywhere.com/api/dashboard';
 
   constructor(
     private http: HttpClient

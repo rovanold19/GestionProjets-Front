@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 export class CommentaireService {
 
   apiUrl =
-  'http://127.0.0.1:8000/api/commentaires';
+  'https://rovanold.pythonanywhere.com/api/commentaires';
 
   constructor(
     private http: HttpClient

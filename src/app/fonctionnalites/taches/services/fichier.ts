@@ -10,7 +10,7 @@ import { environnement } from '../../../environnements/environnement.developpeme
 
 export class FichierService {
 
-  apiUrl =`${environnement.apiUrl}/files`;
+  apiUrl ='https://rovanold.pythonanywhere.com/api/files';
 
   constructor(
     private http: HttpClient

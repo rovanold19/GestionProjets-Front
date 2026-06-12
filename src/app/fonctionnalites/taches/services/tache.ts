@@ -10,7 +10,7 @@ import { environnement } from '../../../environnements/environnement.developpeme
 
 export class TacheService {
 
-  apiUrl =`${environnement.apiUrl}/taches`;
+  apiUrl ='https://rovanold.pythonanywhere.com/api/taches';
 
   constructor(
     private http: HttpClient
