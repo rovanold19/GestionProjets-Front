@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 
 import { Injectable } from '@angular/core';
+import { environnement } from '../../../environnements/environnement.developpement';
 
 
 @Injectable({
@@ -9,8 +10,7 @@ import { Injectable } from '@angular/core';
 
 export class FichierService {
 
-  apiUrl =
-  'http://127.0.0.1:8000/api/files';
+  apiUrl =`${environnement.apiUrl}/files`;
 
   constructor(
     private http: HttpClient

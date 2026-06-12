@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 
 import { Injectable } from '@angular/core';
+import { environnement } from '../../../environnements/environnement.developpement';
 
 
 @Injectable({
@@ -9,8 +10,7 @@ import { Injectable } from '@angular/core';
 
 export class TacheService {
 
-  apiUrl =
-  'http://127.0.0.1:8000/api/taches';
+  apiUrl =`${environnement.apiUrl}/taches`;
 
   constructor(
     private http: HttpClient

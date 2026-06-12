@@ -11,7 +11,7 @@ import { NavbarComponent } from "../../../layouts/navbar/navbar";
   templateUrl: './modification-tache.html',
   styleUrl: './modification-tache.css',
   standalone: true, 
-  imports: [Sidebar, NavbarComponent, FormsModule] 
+  imports: [Sidebar, FormsModule] 
 })
 export class ModificationTache implements OnInit {
   listeProjets: any[] = [];
